@@ -1,6 +1,6 @@
 package com.company.arrays;
 
-import java.util.Map;
+import com.company.PrintArray;
 
 public class ThirdMaximumNumber {
     public static int thirdMax(int[] nums) {

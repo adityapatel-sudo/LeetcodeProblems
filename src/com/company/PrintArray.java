@@ -1,4 +1,4 @@
-package com.company.arrays;
+package com.company;
 
 public class PrintArray {
     public static void printArray(int[] array){
