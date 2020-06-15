@@ -14,7 +14,7 @@ package com.company;
 */
 
 
-public class Print2DArray {
+public class Print2DIntArray {
     public static void PrintArray(int[][] array){
         int row = array.length;
         int column = array[0].length;

@@ -1,6 +1,6 @@
 package com.company.arrayandstring;
 
-import com.company.Print2DArray;
+import com.company.Print2DIntArray;
 import com.company.PrintArray;
 
 public class DiagonalTraverse2DArray {
@@ -20,7 +20,7 @@ public class DiagonalTraverse2DArray {
         int cursor = 0;
         boolean UR = true;
 
-        Print2DArray.PrintArray(matrix);
+        Print2DIntArray.PrintArray(matrix);
 
         while(cursor<diagonalOrder.length){
             diagonalOrder[cursor] = matrix[row][column];
