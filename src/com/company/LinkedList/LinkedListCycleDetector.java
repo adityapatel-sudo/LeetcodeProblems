@@ -18,5 +18,6 @@ import java.util.List;
 public class LinkedListCycleDetector {
     public static ListNode detectCycle(MyLinkedList.Node head){
         var nodesSet = new HashSet<MyLinkedList.Node>();
+        return null;
     }
 }
