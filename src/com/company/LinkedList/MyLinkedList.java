@@ -3,7 +3,7 @@ package com.company.LinkedList;
 
 /*
 SUCCESS!!
-This was definitely the hardest leetcode question so far. This website helped a lot:http://www.pythontutor.com/java.html#mode=edit
+This was definitely the hardest leetcode question so far. This website helped a lot: http://www.pythontutor.com/java.html#mode=edit
 I'm pretty happy with myself after this.
 
         MyLinkedList j = new MyLinkedList();
