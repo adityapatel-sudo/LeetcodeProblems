@@ -1,30 +1,23 @@
 package com.company;
-
 import java.util.Scanner;
 
 public class mainSchool {
-
     public static void main(String[] args) {
-        Scanner console = new Scanner(System.in);
-        int numString = console.nextInt();
-        System.out.println();
-
-        addStrings(numString, console);
-    }
-
-    public static void addStrings(int numOfStrings, Scanner console) {
-        int total = 0;
-        for(int i = 0; i < numOfStrings; i++){
-            total += addASCII(console.next());
+        String input = "edingerstinger";
+        String back = "";
+        for(int i = input.length()-1; i >=0;i--){
+            back =  input.charAt(i)+back;
+            i--;
         }
-        System.out.println(total);
+        System.out.println(back);
     }
-    public static int addASCII(String string){
-        int total = 0 ;
-        for(int i = 0; i < string.length(); i++){
-            total += string.charAt(i);
-        }
-        return total;
-    }
-
 }
+
+
+
+
+
+
+
+
+
