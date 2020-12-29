@@ -3,20 +3,27 @@ package com.company.BinaryTree;
 import java.util.*;
 
 class Solution {
-    public List < Integer > inorderTraversal(TreeNode root) {
-        List < Integer > res = new ArrayList < > ();
-        goUntilNull(root, res);
-        return res;
+    public static void main(String[] args){
+        TreeNode node = new TreeNode();
+        node.val = 1;
+        node.right = new TreeNode(2,null,null);
+        System.out.println(preorderTraversal(node).toString());
     }
 
-    public void goUntilNull(TreeNode root, List < Integer > res) {
+    public static List <Integer> preorderTraversal(TreeNode root) {
+        List <Integer> list = new ArrayList <> ();
+        goUntilNull(root, list);
+        return list;
+    }
+
+    public static void goUntilNull(TreeNode root, List <Integer> list) {
         if (root != null) {
+            list.add(root.val);
             if (root.left != null) {
-                goUntilNull(root.left, res);
+                goUntilNull(root.left, list);
             }
-            res.add(root.val);
             if (root.right != null) {
-                goUntilNull(root.right, res);
+                goUntilNull(root.right, list);
             }
         }
     }

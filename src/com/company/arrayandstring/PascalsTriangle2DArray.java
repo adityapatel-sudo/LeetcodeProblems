@@ -5,37 +5,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PascalsTriangle2DArray {
-    public static List<List<Integer>> generatePascalTriangle(int numRows) {
-
-        List<List<Integer>> pascalTriangle = new ArrayList<>();
-
+    public static void generatePascalTriangle(int numRows) {
+        int[] before = new int[numRows+1];
         if(numRows>0){
-            pascalTriangle.add(new ArrayList<Integer>());
-            pascalTriangle.get(0).add(1);
-
-            System.out.println(pascalTriangle.get(0));
+            before[0] = 1;
+            System.out.println(before[0]);
         }
         if(numRows>1){
-            pascalTriangle.add(new ArrayList<Integer>());
-            pascalTriangle.get(1).add(1);
-            pascalTriangle.get(1).add(1);
-
-            System.out.println(pascalTriangle.get(1));
-        }
-        if(numRows>2){
-            for(int cursorList = 2; cursorList<numRows;cursorList++){
-
-                List<Integer> rowi = new ArrayList<>();
-                rowi.add(1);
-                for(int cursorInt = 1; cursorInt < cursorList; cursorInt++){
-                    rowi.add(cursorInt,pascalTriangle.get(cursorList-1).get(cursorInt-1)+pascalTriangle.get(cursorList-1).get(cursorInt));
+            int[] after = new int[numRows+1];
+            after[0] = 1;
+            after[1] = 1;
+            if(numRows>2){
+                for(int i = 2; i<=numRows;i++){
+                    before = after.clone();
+                    System.out.print("1 ");
+                    for(int j = 1;j<i-1;j++){
+                        after[j] = before[j-1]+before[j];
+                        System.out.print(after[j]+" ");
+                    }
+                    after[i] = 1;
+                    System.out.println("1");
                 }
-                rowi.add(1);
-                System.out.println(rowi);
-                pascalTriangle.add(rowi);
             }
         }
-
-        return pascalTriangle;
     }
 }
