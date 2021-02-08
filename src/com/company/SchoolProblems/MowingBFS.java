@@ -1,13 +1,14 @@
 package com.company.SchoolProblems;
-//https://classroom.google.com/u/0/c/MTMwOTA5MjcxMDM1/a/MjUwNDI1ODQ3NzQy/details
 
 import com.company.Print2DIntArray;
 
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
-public class Mowing {
+public class MowingBFS {
 
     static PrintWriter out = new PrintWriter(System.out);
     public static void main(String[] args) {
@@ -18,35 +19,44 @@ public class Mowing {
             int l = s.nextInt();
             int width = s.nextInt();
             int[][] lawn = new int[l][width];
-            int x = s.nextInt(), y = s.nextInt();
+            int startX = s.nextInt(), startY = s.nextInt();
             int[][] before = new int[l][width];
             fillBefore(s, l, width, lawn, before);
-            recu(lawn, y, x);
+
+            Queue<Position> queue = new LinkedList<>();
+            queue.add(new Position(startX,startY));
+            while(!queue.isEmpty()) {
+                Position cur = queue.poll();
+                int x = cur.x, y = cur.y;
+
+                lawn[y][x] = -8;
+                Print2DIntArray.PrintArray(lawn);
+                System.out.println();
+                lawn[y][x] = -2;
+
+                if (lawn[y - 1][x] == 0) {
+                    queue.add(new Position(x, y - 1));
+                    lawn[y - 1][x] = -3;
+                }
+                if (lawn[y][x + 1] == 0) {
+                    queue.add(new Position(x + 1, y));
+                    lawn[y][x + 1] = -3;
+                }
+                if (lawn[y + 1][x] == 0) {
+                    queue.add(new Position(x, y + 1));
+                    lawn[y + 1][x] = -3;
+                }
+                if (lawn[y][x - 1] == 0) {
+                    queue.add(new Position(x - 1, y));
+                    lawn[y][x - 1] = -3;
+                }
+            }
+
             fillAfter(lawn);
             print(lawn, before);
             lawns--;
-            out.println("\n\n\n\n\n\n\n\n\n\n");
         }
         out.close();
-    }
-
-    static void recu(int[][] lawn, int y, int x) {
-
-        lawn[y][x] = 8;
-        Print2DIntArray.PrintArray(lawn);
-        System.out.println();
-        lawn[y][x] = 9;
-
-        if (lawn[y - 1][x] == 0) recu(lawn, y - 1, x);
-        if (lawn[y][x + 1] == 0) recu(lawn, y, x + 1);
-        if (lawn[y + 1][x] == 0) recu(lawn, y + 1, x);
-        if (lawn[y][x - 1] == 0) recu(lawn, y, x - 1);
-
-        lawn[y][x] = 8;
-        Print2DIntArray.PrintArray(lawn);
-        lawn[y][x] = 2;
-
-        System.out.println();
     }
     static void fillBefore(Scanner scanner, int l, int w, int[][] map, int[][] be) {
         Arrays.fill(map[0], 1);
@@ -114,5 +124,13 @@ public class Mowing {
             System.out.println();
         }
         System.out.println();
+    }
+}
+class Position {
+    int x;
+    int y;
+    public Position(int x, int y){
+        this.x=x;
+        this.y=y;
     }
 }
