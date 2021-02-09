@@ -56,9 +56,8 @@ class Term implements Comparable<Term>{
         this.term = term;
     }
     @Override
-    public int compareTo(@NotNull Term o) {
-        if (o.count==this.count) return 0;
-        return (o.count>this.count) ?  -1 :  1;
+    public int compareTo( Term o) {
+        return this.count-o.count;
     }
     public String toString(){
         return term+" "+count+"\n";
