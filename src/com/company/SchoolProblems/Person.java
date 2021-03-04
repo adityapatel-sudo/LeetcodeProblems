@@ -40,16 +40,8 @@ public class Person implements Comparable<Person>{
 
     @Override
     public int compareTo( Person o) {
-        int compareName = name.compareTo(o.name);
-        if(compareName>0)return 1;
-        if(compareName<0)return -1;
-
-        if(age>o.age)return 1;
-        if(o.age>age)return -1;
-
-        if(weight>o.weight)return 1;
-        if(o.weight>weight)return -1;
-
-        return 0;
+        if(!name.equals(o.name)) return name.compareTo(o.name);
+        if(age!=o.age) return Integer.compare(age,o.age);
+        return Double.compare(weight, o.weight);
     }
 }

@@ -21,7 +21,6 @@ public class Count2 {
         while(true){
             String temp = in.next();
             if(temp.equals("lastString")) break;
-
             boolean contain = false;
 
             //if term exists in arraylist, adds to count
@@ -44,9 +43,7 @@ public class Count2 {
         for (Term x : array){
             System.out.print(x);
         }
-
     }
-
 }
 class Term implements Comparable<Term>{
     String term;
