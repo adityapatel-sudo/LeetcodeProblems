@@ -16,48 +16,44 @@ public class BennyTheBunny {
         String file = scanner.nextLine();
         scanner= new Scanner(new File(file));
 
-        if(file.equals("7.txt"))System.out.println(4998473);
-        else {
-            n = scanner.nextInt();
-            prevCheck = new boolean[n][n];
-            locs = new loc[n][n];
+        n = scanner.nextInt();
+        prevCheck = new boolean[n][n];
+        locs = new loc[n][n];
 
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    locs[i][j] = new loc(scanner.nextInt(), 0, 0);
-                }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                locs[i][j] = new loc(scanner.nextInt(), 0, 0);
             }
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    locs[i][j].toY = scanner.nextInt();
-                }
-            }
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    locs[i][j].carrots = scanner.nextInt();
-                }
-            }
-
-            int max = 0;
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    int x = j,y = i, carrots = 0;
-                    while(check(y,x)){
-                        carrots = carrots+locs[y][x].carrots;
-                        int temp = y;
-                        y = y+locs[y][x].toY;
-                        x = x+locs[temp][x].toX;
-                    }
-                    for(boolean[] boolarray : prevCheck){
-                        Arrays.fill(boolarray,false);
-                    }
-                    max = Math.max(max, carrots);
-                }
-            }
-
-
-            System.out.println(max);
         }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                locs[i][j].toY = scanner.nextInt();
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                locs[i][j].carrots = scanner.nextInt();
+            }
+        }
+
+        int max = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int x = j,y = i, carrots = 0;
+                while(check(y,x)){
+                    carrots = carrots+locs[y][x].carrots;
+                    int temp = y;
+                    y = y+locs[y][x].toY;
+                    x = x+locs[temp][x].toX;
+                }
+                prevCheck = new boolean[n][n];
+                max = Math.max(max, carrots);
+            }
+        }
+
+
+        System.out.println(max);
+
     }
 
     public static boolean check(int y, int x){
