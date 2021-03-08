@@ -19,7 +19,6 @@ public class BennyTheBunny {
         n = scanner.nextInt();
         prevCheck = new boolean[n][n];
         locs = new loc[n][n];
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 locs[i][j] = new loc(scanner.nextInt(), 0, 0);
