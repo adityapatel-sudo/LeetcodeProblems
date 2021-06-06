@@ -4,7 +4,7 @@ package com.company.SchoolProblems;
 public class Person implements Comparable<Person>{
     private String name;
     private int age;
-    private double weight;
+    public double weight;
 
     public Person(String name, int age, double weight) {
         this.name = name;
@@ -45,3 +45,4 @@ public class Person implements Comparable<Person>{
         return Double.compare(weight, o.weight);
     }
 }
+
